@@ -37,12 +37,15 @@ while [ $# -gt 0 ]; do
    -r | --route ) #select interface name to display
      if [ "$2" == gateway ]; then
 	echo "My default gateway is $gatewayip"
+	exit 0
    else
      if [ "$2" == eth0 ]; then
 	echo "Interface ${ethernet} has address ${ips[0]}"
+	exit 0
    else
      if [ "$2" == loop ]; then
 	echo "Interface ${loopback} has address ${ips[1]}"
+	exit 0
    else
      error-message "You gave me $2 when you should have given me either, gateway, eth0, or loop"
 	exit 1
@@ -53,7 +56,6 @@ while [ $# -gt 0 ]; do
    esac
    shift
 done
-
 	echo "My default gateway is $gatewayip"
 	echo "Interface ${ethernet} has address ${ips[0]}"
 	echo "Interface ${loopback} has address ${ips[1]}"
